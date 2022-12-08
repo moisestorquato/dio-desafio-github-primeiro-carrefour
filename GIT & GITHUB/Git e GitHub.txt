@@ -1,0 +1,261 @@
+Git e GitHub
+
+Comandos
+
+cd / - raiz c:\
+cls - clear (Ctrl+L) - apaga tudo
+dir - ls - mostra diretórios
+mkdir - cria diretórios
+Echo escreve no diretório
+echo hello > hello.txt cria arquivo txt
+rmdir Workspace s/ q/ - exclui diretório e arquivos / rm -rf workspace
+
+Funcionamento do GIT
+
+SHA1 - Significa Secure hash Algorithm (Algoritmo de hash seguro), é um conjunto de funções hash criptográficas projetadas pela NSA(Agência de Segurança Nacional dos EUA).
+
+A encriptação gera conjunto de caracteres identificador de 40 dígitos.
+
+1 echo “Ola mundo” | openss1 sha1
+2 > (stdin)= chave
+
+Objetos fundamentais
+
+BLOBS
+Echo ‘conteudo’ | git hash-object --stdin
+
+Echo -e ‘conteudo’ | openssl1 sha1 (gera outra chave)
+
+Blob tamanho 42
+\0
+Ola mundo
+Echo -e ‘blob 9\0conteudo’ | openssl1 sha1 (mesma chave)
+
+TREES
+
+Tree <tamanho>
+\0
+Blob 	sa4d8s 	texto.txt
+
+
+
+
+
+COMMITS
+
+Tree		s4a5sq1
+Parente	a98acq1
+Autor		perkles
+
+Mensagem	“inicia ...”
+
+Timestamp
+
+O SHA1 desse commit é o hash de toda a essa informação
+
+
+Sistema distribuído 
+
+Seu repositório na nuvem, distribuídos por todos os colaboradores dos códigos
+
+Segurança
+
+Chaves SSH e Tokens
+
+Entra com usuário e sanha no Github
+Vai na opção
+SSH and GPG keys
+
+
+CLI  - Git bash
+
+ssh-keygen -t ed25519 -c moisestorquatodearaujo@gmail.com
+Criando as chave e mostra o local que será salva as chaves
+.ssh/id_ed25519
+
+
+Entra com a senha 
+
+Cd /c/users/…./.ssh
+
+Ls
+Id_ed25519    id_ed25519.pub
+
+
+Abrir chave pública
+
+No github colocar a chave pública e o email na frente
+No CLI
+
+Ls
+Mostra o que tem na pasta onde se localiza
+
+Pwd mostra o caminho completo
+
+
+eval $(ssh-agent -s)
+
+agent pid ****
+
+Entregar a chave 
+
+Ssh-add id_ed25519
+
+
+
+Clonando um repositório com chave SSH 
+
+Git clone e link
+Yes
+
+Token de acesso pessoal
+
+Github
+Developer settings > Personal access token> generate new token
+
+Opção repo padrão
+
+Coloque o nome para o token
+
+Generate token
+Copia somente 1 vez e cola em algum local.
+
+
+Git clone https://github.com
+
+Cola a chave personal access token
+
+
+Sing in
+
+
+
+Primeiros comandos com o GIT
+
+
+
+git init
+git init dentro do diretório c:/workspace/livro-receitas/.git/
+
+Ls não mostra .git oculto
+
+ls -a 
+
+cd .git/
+
+ls  dentro da pasta .git/
+Aparece 
+Config description HEAD hooks/ info/ objects/ refs/
+Criar um perfil de autor
+
+git config --global user.email “moisestorquatodearaujo@gmail.com”
+git config --global user.name "moisestorquato" 
+
+Criando Markdown
+
+Test.md
+
+# texto
+## texto
+### texto
+#### texto
+##### texto
+###### texto
+
+Typora software de Markdonw
+_italico_   **Negrito**
+[ ] 
+[ ]
+[ ]
+
+Dentro da pasta
+
+
+
+
+
+git add
+
+git add *
+
+git commit
+
+git commit -m “commit inicial”
+
+Inserindo novos arquivos
+
+
+git status
+Mostra status do commit
+
+Criando nova pasta(receitas) e arquivos
+
+mv strogonoff.md ./receitas/  moveu o arquivo para pasta receitas
+
+git status
+
+Ao mover o arquivo para outra pasta aparece
+
+Deleted: strogonoff.md
+
+git add strogonoff.md receitas/
+
+git status 
+Aparece as mudanças para serem commitadas
+
+Renamed: strogonoff.md -> receitas/strogonoff.md
+
+git commit -m “cria pasta receitas, move arquivo para receitas”
+
+git status
+Nada a commitar 
+
+git add* - adiciona tudo que está na pasta para commit
+git commit -m “adiciona arquivos”
+
+
+
+
+
+
+GITHUB
+
+git config --list
+
+q - para sair
+
+git config --global --unset user.email
+
+git config --global --unset user.nome
+
+git config --global user.email “moisestorquatodearaujo@gmail.com”
+
+git config --global user.nome “Moisés”
+
+
+Adcionando repositório remoto no git
+
+Abre o Github, cria repositório novo
+
+…or push an existing repository from the command line
+git remote add origin https://github.com/moisestorquato/Test.git
+git branch -M main
+git push -u origin main
+
+Git remote -v
+
+Visualiza os repositórios remotos
+
+
+ 
+
+
+Como os conflitos acontecem no GitHub e como resolvê-los
+
+
+Conflito de merge
+
+Alguém alterou a versão do código e é necessário verificar e atualizar o código manualmente para enviar o código mais atualizado para o github
+
+
+Merge conflict
